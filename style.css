@@ -1,0 +1,218 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+	background-color: #e5e5f7;
+	background-image:  linear-gradient(30deg, #bbbbbb 12%, transparent 12.5%, transparent 87%, #bbbbbb 87.5%, #bbbbbb), linear-gradient(150deg, #bbbbbb 12%, transparent 12.5%, transparent 87%, #bbbbbb 87.5%, #bbbbbb), linear-gradient(30deg, #bbbbbb 12%, transparent 12.5%, transparent 87%, #bbbbbb 87.5%, #bbbbbb), linear-gradient(150deg, #bbbbbb 12%, transparent 12.5%, transparent 87%, #bbbbbb 87.5%, #bbbbbb), linear-gradient(60deg, #bbbbbb77 25%, transparent 25.5%, transparent 75%, #bbbbbb77 75%, #bbbbbb77), linear-gradient(60deg, #bbbbbb77 25%, transparent 25.5%, transparent 75%, #bbbbbb77 75%, #bbbbbb77);
+	background-size: 78px 137px;
+	background-position: 0 0, 0 0, 39px 68px, 39px 68px, 0 0, 39px 68px;
+}
+
+#screen {
+	height: 100vh;
+	padding: 40px;
+}
+
+#content {
+	display: flex;
+	justify-content: center;
+	border: 3px solid #000;
+	border-radius: 30px;
+	height: 100%;
+	background: linear-gradient(to right, #222, #666);
+}
+
+#preview {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 2;
+}
+#preview > h3 { font-size: 30px }
+#preview-box {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	background-color: #ddd;
+}
+#preview-box > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+#hat-display {
+	width: 160px;
+	height: 64px;
+	top: -160px !important;
+	z-index: 10;
+	background-image: url("images/hat/hat1.png");
+	background-size: cover;
+}
+#body-display {
+	width: 128px;
+	height: 128px;
+	z-index: 1;
+	background-image: url("images/body/body1.png");
+	background-size: cover;
+}
+#face-display {
+	width: 64px;
+	height: 64px;
+	z-index: 5;
+	background-image: url("images/face/face1.png");
+	background-size: cover;
+}
+#shoes-display {
+	width: 160px;
+	height: 64px;
+	top: 140px !important;
+	z-index: 10;
+	background-image: url("images/shoes/shoes1.png");
+	background-size: cover;
+}
+
+#selector {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	flex: 5;
+}
+#selector > div {
+	display: flex;
+	flex-direction: column;
+}
+#selector h3 {
+	font-size: 30px;
+	align-self: center;
+	margin-bottom: 5px;
+}
+
+.item-container {
+	display: flex;
+	justify-content: space-evenly;
+}
+.item-button {
+	width: 90px;
+	height: 90px;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid #000;
+	border-radius: 10px;
+	background-color: #ddd;
+}
+.selected {
+	background-color: #afa;
+}
+
+#name-introduce {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	transition: opacity .5s;
+}
+#name-introduce > h2 {
+	text-align: center;
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+#name-introduce > input {
+	margin-top: 20px;
+	height: 2em;
+	width: 30%;
+	background: linear-gradient(to bottom, transparent, #ccc5);
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #fff;
+	font-size: 20px;
+	padding: 0 10px;
+	text-align: center;
+}
+#name-introduce > button {
+	width: 30%;
+	height: 1.75em;
+	background-color: #ccc;
+	border: none;
+	color: #000;
+	text-align: center;
+}
+#name-introduce > button:hover {
+	cursor: pointer;
+	background-color: #999;
+}
+#presentation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 60px;
+	overflow: hidden;
+	width: 0%;
+	height: 100%;
+}
+#avatar-selector {
+	display: flex;
+	height: 100%;
+	width: 0%;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity .5s;
+}
+
+/* ANIMATIONS */
+
+@KeyFrames hide {
+	from { width: 100% }
+	to { width: 0% }
+}
+
+@KeyFrames show {
+	from { width: 0% }
+	to { width: 100% }
+}
+
+@KeyFrames upLetter {
+	0% { color: #fff; transform: translateY(0); }
+	50% { color: #5f5; transform: translateY(-20px); }
+	100% { color: #fff; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+
+@Media only screen and (max-width: 700px) {
+	#screen { padding: 20px }
+	#name-introduce > h2 { font-size: 20px }
+	#name-introduce > input, #name-introduce > button { width: 80% }
+	#presentation { 
+		display: grid;
+		grid-template: repeat(8, 1fr) / 100px 100px;
+		grid-auto-flow: column;
+		font-size: 40px;
+		justify-items: center;
+	}
+	#avatar-selector {
+		flex-direction: column;
+		overflow-y: auto;
+	}
+}
+
+@Media only screen and (max-width: 1000px) {
+	.item-button {
+		width: 45px;
+		height: 45px;
+		background-position: cover;
+	}
+}
